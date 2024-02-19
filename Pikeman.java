@@ -1,11 +1,9 @@
-public class Pikeman extends Heroes{
+public class Pikeman extends Heroes {
     protected int power;
     protected int speed;
 
-    protected Pikeman(String name, int hp, int stamina, int agility, int intellect, int strange, int power, int speed) {
-        super(name, hp, stamina, agility, intellect, strange);
-        this.power = power;
-        this.speed = speed;
+    protected Pikeman(String name, int x, int y) {
+        super(name, 75, 45, 40, 10, 35, x, y);
     }
 
     @Override
@@ -20,6 +18,6 @@ public class Pikeman extends Heroes{
 
     @Override
     public String toString() {
-        return "class Pikeman";
+        return "class Pikeman, coordinate: " + place;
     }
 }

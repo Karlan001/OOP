@@ -2,10 +2,8 @@ public class Monk extends Heroes{
     protected int mana;
     protected int efficiency;
 
-    protected Monk(String name, int hp, int stamina, int agility, int intellect, int strange, int mana, int efficiency) {
-        super(name, hp, stamina, agility, intellect, strange);
-        this.mana = mana;
-        this.efficiency = efficiency;
+    protected Monk(String name, int x, int y) {
+        super(name, 65, 40, 35, 10, 10, x, y);
     }
 
     protected int buff(Heroes target){
@@ -27,6 +25,6 @@ public class Monk extends Heroes{
 
     @Override
     public String toString() {
-        return "class Monk";
+        return "class Monk, coordinate: " + place;
     }
 }

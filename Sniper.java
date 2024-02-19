@@ -3,10 +3,8 @@ public class Sniper extends Heroes{
 
     protected int stealthiness;
 
-    protected Sniper(String name, int hp, int stamina, int agility, int intellect, int strange, int accuracy, int stealthiness) {
-        super(name, hp, stamina, agility, intellect, strange);
-        this.accuracy = accuracy;
-        this.stealthiness = stealthiness;
+    public Sniper(String name, int x, int y) {
+        super(name, 60, 40, 35, 10, 10, x, y);
     }
 
     protected int attack(Sniper target) {
@@ -22,6 +20,6 @@ public class Sniper extends Heroes{
 
     @Override
     public String toString() {
-        return "class Sniper";
+        return "class Sniper, coordinate: " + place;
     }
 }

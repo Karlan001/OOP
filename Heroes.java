@@ -11,17 +11,20 @@ abstract class Heroes {
 
     protected int strange;
 
+    public Coordinate place;
+
 static {
     Heroes.random = new Random();
 }
 
-    protected Heroes(String name, int hp, int stamina, int agility, int intellect, int strange) {
+    protected Heroes(String name, int hp, int stamina, int agility, int intellect, int strange, int x, int y) {
         this.name = name;
         this.hp = hp;
         this.stamina = stamina;
         this.agility = agility;
         this.intellect = intellect;
         this.strange = strange;
+        place = new Coordinate(x, y);
     }
     protected String getInfo(){
         return String.format("Name: %s, hp: %d, stamina: %d, agility: %d, intellect: %d, strange: %d", this.name, this.hp, this.stamina, this.agility, this.intellect,

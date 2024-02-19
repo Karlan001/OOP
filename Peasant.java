@@ -1,7 +1,7 @@
 public class Peasant extends Heroes{
 
-    protected Peasant(String name, int hp, int stamina, int agility, int intellect, int strange) {
-        super(name, hp, stamina, agility, intellect, strange);
+    protected Peasant(String name, int x, int y) {
+        super(name, 40, 20, 20, 5, 5, x, y);
     }
 
     @Override
@@ -10,7 +10,7 @@ public class Peasant extends Heroes{
     }
 
     public String toString() {
-        return "class Peasant";
+        return "class Peasant, coordinate: " + place;
     }
 
 }

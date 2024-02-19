@@ -2,10 +2,8 @@ public class Mag extends Heroes{
     protected int mana;
     protected int spell_speed;
 
-    protected Mag(String name, int hp, int stamina, int agility, int intellect, int strange, int mana, int spell_speed) {
-        super(name, hp, stamina, agility, intellect, strange);
-        this.mana = mana;
-        this.spell_speed = spell_speed;
+    protected Mag(String name, int x, int y) {
+        super(name, 50, 30, 25, 40, 10, x, y);
     }
 
     protected int attack(Heroes target) {
@@ -30,6 +28,6 @@ public class Mag extends Heroes{
     }
 
     public String toString() {
-        return "class Mag";
+        return "class Mag, coordinate: " + place;
     }
 }

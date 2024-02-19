@@ -2,10 +2,8 @@ public class Robber extends Heroes{
     protected int speed;
     protected int dodge;
 
-    protected Robber(String name, int hp, int stamina, int agility, int intellect, int strange, int speed, int dodge) {
-        super(name, hp, stamina, agility, intellect, strange);
-        this.speed = speed;
-        this.dodge = dodge;
+    protected Robber(String name, int x,int y) {
+        super(name, 65, 45, 50, 10, 20, x, y);
     }
 
     @Override
@@ -23,7 +21,7 @@ public class Robber extends Heroes{
     }
 
     public String toString() {
-        return "class Robber";
+        return "class Robber, coordinate: " + place;
     }
 
 

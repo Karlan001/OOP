@@ -1,11 +1,9 @@
-public class Crossbowman extends Heroes{
+public class Crossbowman extends Heroes {
     protected int accuracy;
     protected int speed;
 
-    protected Crossbowman(String name, int hp, int stamina, int agility, int intellect, int strange, int accuracy, int speed) {
-        super(name, hp, stamina, agility, intellect, strange);
-        this.accuracy = accuracy;
-        this.speed = speed;
+    protected Crossbowman(String name, int x, int y) {
+        super(name, 80, 50, 45, 10, 50, x, y);
     }
 
     @Override
@@ -14,13 +12,13 @@ public class Crossbowman extends Heroes{
     }
 
     protected int powerFullShot(){
-        int damage = random.nextInt(4, 8);
+        int damage = Heroes.random.nextInt(4, 8);
         this.agility -= 4;
         return damage;
     }
 
     public String toString() {
-        return "class Crossbowman";
+        return "class Crossbowman, coordinate: " + place;
     }
 
 }
