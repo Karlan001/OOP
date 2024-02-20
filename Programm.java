@@ -20,6 +20,11 @@ public class Programm {
         return arr[random.nextInt(arr.length)];
     }
 
+    /**
+     * Метод для автоматического заполнения команды из 5 объектов разных классов
+     * @param team Массив команды, которую необходимо заполнить
+     * @param y координата для выбора стороны (право/лево)
+     */
     static void fill_team(ArrayList<Heroes> team, int y) {
         Random random = new Random();
         for (int i = 0; i < 5; i++) {

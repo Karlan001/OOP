@@ -24,6 +24,12 @@ public class Sniper extends Heroes{
     public String toString() {
         return name + ", class Sniper, coordinate: " + place;
     }
+
+    /**
+     * Метод поиска ближайшего противнка к текущему объекту
+     * @param enemy Массив объектов вражеской команды
+     * @return Возвращает результат с расстоянием и информацией ближайшего противника
+     */
     protected String findEnemy(ArrayList<Heroes> enemy){
         int minDistance = 10;
         String clas = null;
