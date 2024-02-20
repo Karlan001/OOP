@@ -21,7 +21,7 @@ public class Robber extends Heroes{
     }
 
     public String toString() {
-        return "class Robber, coordinate: " + place;
+        return name + ", class Robber, coordinate: " + place;
     }
 
 

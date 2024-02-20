@@ -28,6 +28,6 @@ public class Mag extends Heroes{
     }
 
     public String toString() {
-        return "class Mag, coordinate: " + place;
+        return name + ", class Mag, coordinate: " + place;
     }
 }

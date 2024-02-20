@@ -10,7 +10,7 @@ public class Peasant extends Heroes{
     }
 
     public String toString() {
-        return "class Peasant, coordinate: " + place;
+        return name + ", class Peasant, coordinate: " + place;
     }
 
 }

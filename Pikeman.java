@@ -18,6 +18,6 @@ public class Pikeman extends Heroes {
 
     @Override
     public String toString() {
-        return "class Pikeman, coordinate: " + place;
+        return name + ", class Pikeman, coordinate: " + place;
     }
 }

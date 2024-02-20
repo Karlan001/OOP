@@ -18,7 +18,7 @@ public class Crossbowman extends Heroes {
     }
 
     public String toString() {
-        return "class Crossbowman, coordinate: " + place;
+        return name + ", class Crossbowman, coordinate: " + place;
     }
 
 }

@@ -25,6 +25,6 @@ public class Monk extends Heroes{
 
     @Override
     public String toString() {
-        return "class Monk, coordinate: " + place;
+        return name + ", class, coordinate: " + place;
     }
 }
