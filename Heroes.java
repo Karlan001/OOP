@@ -1,6 +1,6 @@
 import java.util.Random;
 
-abstract class Heroes {
+abstract class Heroes implements Step{
     protected static Random random;
     protected String name;
     protected int hp;
@@ -12,6 +12,8 @@ abstract class Heroes {
     protected int strange;
 
     public Coordinate place;
+
+    protected int initiative;
 
 static {
     Heroes.random = new Random();
@@ -27,8 +29,8 @@ static {
         place = new Coordinate(x, y);
     }
     protected String getInfo(){
-        return String.format("Name: %s, hp: %d, stamina: %d, agility: %d, intellect: %d, strange: %d", this.name, this.hp, this.stamina, this.agility, this.intellect,
-                this.strange);
+        return String.format("Name: %s, hp: %d, stamina: %d, agility: %d, intellect: %d, strange: %d, initiative: %d", this.name, this.hp, this.stamina, this.agility, this.intellect,
+                this.strange, this.initiative);
     }
 
     protected void getDamage(int damage) {
@@ -56,5 +58,16 @@ static {
 
     protected void getBuffHp(int buff){
         this.hp += buff;
+    }
+    protected boolean isDead(Heroes hero){
+        if(this.hp < 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    protected int getInitiative(){
+        return this.initiative;
     }
 }

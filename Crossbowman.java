@@ -3,9 +3,11 @@ import java.util.ArrayList;
 public class Crossbowman extends Heroes {
     protected int accuracy;
     protected int speed;
+    int arrows = 8;
 
     protected Crossbowman(String name, int x, int y) {
         super(name, 80, 50, 45, 10, 50, x, y);
+        this.initiative = 3;
     }
 
     @Override
@@ -14,7 +16,7 @@ public class Crossbowman extends Heroes {
     }
 
     protected int powerFullShot(){
-        int damage = Heroes.random.nextInt(4, 8);
+        int damage = random.nextInt(4, 8);
         this.agility -= 4;
         return damage;
     }
@@ -22,8 +24,9 @@ public class Crossbowman extends Heroes {
     public String toString() {
         return name + ", class Crossbowman, coordinate: " + place;
     }
-    protected String findEnemy(ArrayList<Heroes> enemy){
+    protected int findEnemy(ArrayList<Heroes> enemy){
         int minDistance = 10;
+        int index = 0;
         String clas = null;
         int xSniper = this.place.getX();
         int ySniper = this.place.getY();
@@ -35,7 +38,16 @@ public class Crossbowman extends Heroes {
                 clas = enemy.get(i).toString();
             }
         }
-        return String.format("Ближайший противник к %s находится на расстоянии: %d и это %s",name, minDistance, clas);
+        return index;
     }
 
+
+    @Override
+    public void Step(ArrayList<Heroes> target) {
+        if(!isDead(Crossbowman.this) && arrows > 0){
+            target.get(findEnemy(target)).getDamage(attack(target.get(findEnemy(target))));
+            System.out.printf("Цель атакована!");
+            arrows -= 1;
+        }
+    }
 }

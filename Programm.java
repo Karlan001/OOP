@@ -1,17 +1,28 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
-import java.util.SortedMap;
 
 public class Programm {
     public static void main(String[] args) {
-//        ArrayList<Heroes> team1 = new ArrayList<>();
+        ArrayList<Heroes> team1 = new ArrayList<>();
         ArrayList<Heroes> team2 = new ArrayList<>();
-//        fill_team(team1, 9);
+        fill_team(team1, 9);
         fill_team(team2, 0);
 //        System.out.println(team1.toString());
         System.out.println(team2.toString());
         Sniper sniper = new Sniper(random_name(), 1, 9);
-        System.out.println(sniper.findEnemy(team2));
+        sniper.Step(team2);
+        System.out.println();
+        ArrayList<Heroes> team3 = new ArrayList<>();
+        team3.addAll(team1);
+        team3.addAll(team2);
+        team3.sort(new Comparator<Heroes>() {
+            @Override
+            public int compare(Heroes o1, Heroes o2) {
+                return o2.getInitiative() - o1.getInitiative();
+            }
+        });
+        team3.stream().map(Heroes::getInfo).forEach(System.out::println);
     }
 
     static String random_name() {

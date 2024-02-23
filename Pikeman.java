@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+
 public class Pikeman extends Heroes {
     protected int power;
     protected int speed;
 
     protected Pikeman(String name, int x, int y) {
         super(name, 75, 45, 40, 10, 35, x, y);
+        this.initiative = 2;
     }
 
     @Override
@@ -19,5 +22,11 @@ public class Pikeman extends Heroes {
     @Override
     public String toString() {
         return name + ", class Pikeman, coordinate: " + place;
+    }
+
+
+    @Override
+    public void Step(ArrayList<Heroes> team) {
+
     }
 }

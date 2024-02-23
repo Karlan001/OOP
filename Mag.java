@@ -1,9 +1,12 @@
-public class Mag extends Heroes{
+import java.util.ArrayList;
+
+public class Mag extends Heroes {
     protected int mana;
     protected int spell_speed;
 
     protected Mag(String name, int x, int y) {
         super(name, 50, 30, 25, 40, 10, x, y);
+        this.initiative = 1;
     }
 
     protected int attack(Heroes target) {
@@ -29,5 +32,11 @@ public class Mag extends Heroes{
 
     public String toString() {
         return name + ", class Mag, coordinate: " + place;
+    }
+
+
+    @Override
+    public void Step(ArrayList<Heroes> team) {
+
     }
 }
