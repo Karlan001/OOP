@@ -1,4 +1,3 @@
-import java.nio.charset.CoderResult;
 import java.util.ArrayList;
 
 public class Robber extends Heroes {

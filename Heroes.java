@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-abstract class Heroes implements Step{
+abstract class Heroes implements Step {
     protected static Random random;
     protected String name;
     protected int hp;
