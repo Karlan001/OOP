@@ -26,7 +26,11 @@ public class Pikeman extends Heroes {
 
 
     @Override
-    public void Step(ArrayList<Heroes> team) {
+    public void Step(ArrayList<Heroes> team, ArrayList<Heroes> frendly) {
+    }
 
+    @Override
+    protected String getInfo() {
+        return String.format("%s, class Pikeman", super.getInfo());
     }
 }

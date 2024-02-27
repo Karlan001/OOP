@@ -1,5 +1,5 @@
 import java.util.ArrayList;
 
 public interface Step {
-    void Step(ArrayList<Heroes> team);
+    void Step(ArrayList<Heroes> team, ArrayList<Heroes> frendly);
 }

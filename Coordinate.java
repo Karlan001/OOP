@@ -30,4 +30,13 @@ public class Coordinate {
     public int getY(){
         return this.y;
     }
+    protected Coordinate getDifference(Coordinate target){
+        Coordinate diff = new Coordinate(x - target.x, y - target.y);
+        return diff;
+    }
+
+    public boolean equals(Coordinate frendly) {
+        return x == frendly.x && y == frendly.y;
+
+    }
 }

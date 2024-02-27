@@ -22,7 +22,7 @@ public class Mag extends Heroes {
     }
     @Override
     protected String getInfo() {
-        return String.format("%s, mana: %d, spell_speed: %d", super.getInfo(), this.mana, this.spell_speed);
+        return String.format("%s, class Mag", super.getInfo());
     }
 
     @Override
@@ -36,7 +36,7 @@ public class Mag extends Heroes {
 
 
     @Override
-    public void Step(ArrayList<Heroes> team) {
+    public void Step(ArrayList<Heroes> team, ArrayList<Heroes> frendly) {
 
     }
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 abstract class Heroes implements Step{
@@ -29,8 +30,8 @@ static {
         place = new Coordinate(x, y);
     }
     protected String getInfo(){
-        return String.format("Name: %s, hp: %d, stamina: %d, agility: %d, intellect: %d, strange: %d, initiative: %d", this.name, this.hp, this.stamina, this.agility, this.intellect,
-                this.strange, this.initiative);
+        return String.format("Name: %s, hp: %d, stamina: %d, agility: %d, intellect: %d, strange: %d, initiative: %d, place: %d, %d", this.name, this.hp, this.stamina, this.agility, this.intellect,
+                this.strange, this.initiative, this.place.x, this.place.y);
     }
 
     protected void getDamage(int damage) {
@@ -61,6 +62,7 @@ static {
     }
     protected boolean isDead(Heroes hero){
         if(this.hp < 1){
+            this.hp = 0;
             return true;
         }
         else{
@@ -69,5 +71,28 @@ static {
     }
     protected int getInitiative(){
         return this.initiative;
+    }
+
+    /**
+     * Метод поиска ближайшего противнка к текущему объекту
+     * @param enemy Массив объектов вражеской команды
+     * @return Возвращает результат с расстоянием и информацией ближайшего противника
+     */
+    protected int findEnemy(ArrayList<Heroes> enemy){
+        int minDistance = 10;
+        String clas = null;
+        int index = 0;
+        int xHero = this.place.getX();
+        int yHero = this.place.getY();
+        for (int i = 0; i < enemy.size(); i++) {
+            int x = enemy.get(i).place.getX();
+            int y = enemy.get(i).place.getY();
+            if (place.coordCalc(xHero, yHero, x, y) < minDistance){
+                minDistance = place.coordCalc(xHero, yHero, x, y);
+                clas = enemy.get(i).toString();
+                index = i;
+            }
+        }
+        return index;
     }
 }

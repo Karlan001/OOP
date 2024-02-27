@@ -19,7 +19,7 @@ public class Sniper extends Heroes {
 
     @Override
     protected String getInfo() {
-        return String.format("%s, accuracy: %d, stealthiness: %d", super.getInfo(), this.accuracy, this.stealthiness);
+        return String.format("%s, class Sniper", super.getInfo(), this.accuracy, this.stealthiness);
     }
 
     @Override
@@ -27,33 +27,13 @@ public class Sniper extends Heroes {
         return name + ", class Sniper, coordinate: " + place;
     }
 
-    /**
-     * Метод поиска ближайшего противнка к текущему объекту
-     * @param enemy Массив объектов вражеской команды
-     * @return Возвращает результат с расстоянием и информацией ближайшего противника
-     */
-    protected int findEnemy(ArrayList<Heroes> enemy){
-        int minDistance = 10;
-        String clas = null;
-        int index = 0;
-        int xSniper = this.place.getX();
-        int ySniper = this.place.getY();
-        for (int i = 0; i < enemy.size(); i++) {
-            int x = enemy.get(i).place.getX();
-            int y = enemy.get(i).place.getY();
-            if (place.coordCalc(xSniper, ySniper, x, y) < minDistance){
-                minDistance = place.coordCalc(xSniper, ySniper, x, y);
-                clas = enemy.get(i).toString();
-                index = i;
-            }
-        }
-        return index;
-    }
+
     @Override
-    public void Step(ArrayList<Heroes> target) {
+    public void Step(ArrayList<Heroes> target, ArrayList<Heroes> frendly) {
         if(!isDead(Sniper.this) && arrows > 0){
             target.get(findEnemy(target)).getDamage(attack(target.get(findEnemy(target))));
-            System.out.printf("Цель под индексом %s атакована!", findEnemy(target));
+            Heroes tar = target.get(findEnemy(target));
+            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(target), tar.place.x, tar.place.y);
             arrows -= 1;
         }
     }

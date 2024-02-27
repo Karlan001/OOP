@@ -43,11 +43,17 @@ public class Crossbowman extends Heroes {
 
 
     @Override
-    public void Step(ArrayList<Heroes> target) {
+    public void Step(ArrayList<Heroes> target, ArrayList<Heroes> frendly) {
         if(!isDead(Crossbowman.this) && arrows > 0){
             target.get(findEnemy(target)).getDamage(attack(target.get(findEnemy(target))));
-            System.out.printf("Цель атакована!");
+            Heroes tar = target.get(findEnemy(target));
+            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(target), tar.place.x, tar.place.y);
             arrows -= 1;
         }
+    }
+
+    @Override
+    protected String getInfo() {
+        return String.format("%s, class Crossbowman", super.getInfo());
     }
 }

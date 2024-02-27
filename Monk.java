@@ -28,12 +28,17 @@ public class Monk extends Heroes {
 
     @Override
     public String toString() {
-        return name + ", class, coordinate: " + place;
+        return name + ", class Monk, coordinate: " + place;
     }
 
 
     @Override
-    public void Step(ArrayList<Heroes> team) {
+    public void Step(ArrayList<Heroes> team, ArrayList<Heroes> frendly) {
 
+    }
+
+    @Override
+    protected String getInfo() {
+        return String.format("%s, class Monk", super.getInfo());
     }
 }

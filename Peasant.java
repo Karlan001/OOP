@@ -18,7 +18,12 @@ public class Peasant extends Heroes {
 
 
     @Override
-    public void Step(ArrayList<Heroes> team) {
+    public void Step(ArrayList<Heroes> team, ArrayList<Heroes> frendly) {
 
+    }
+
+    @Override
+    protected String getInfo() {
+        return String.format("%s, class Peasant", super.getInfo());
     }
 }
