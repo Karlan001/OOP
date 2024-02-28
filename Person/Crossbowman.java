@@ -1,3 +1,5 @@
+package Person;
+
 import java.util.ArrayList;
 
 public class Crossbowman extends Heroes {
@@ -5,18 +7,18 @@ public class Crossbowman extends Heroes {
     protected int speed;
     int arrows = 8;
 
-    protected Crossbowman(String name, int x, int y) {
+    public Crossbowman(String name, int x, int y) {
         super(name, 80, 50, 45, 10, 50, x, y);
         this.initiative = 3;
     }
 
     @Override
-    protected int attack(Heroes target) {
+    public int attack(Heroes target) {
         return super.attack(target);
     }
 
     protected int powerFullShot(){
-        int damage = random.nextInt(4, 8);
+        int damage = Heroes.random.nextInt(4, 8);
         this.agility -= 4;
         return damage;
     }
@@ -53,7 +55,7 @@ public class Crossbowman extends Heroes {
     }
 
     @Override
-    protected String getInfo() {
+    public String getInfo() {
         return String.format("%s, class Crossbowman", super.getInfo());
     }
 }

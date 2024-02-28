@@ -1,16 +1,20 @@
+package Person;
+
+import Main.Coordinate;
+
 import java.util.ArrayList;
 
 public class Pikeman extends Heroes {
     protected int power;
     protected int speed;
 
-    protected Pikeman(String name, int x, int y) {
+    public Pikeman(String name, int x, int y) {
         super(name, 75, 45, 40, 10, 35, x, y);
         this.initiative = 2;
     }
 
     @Override
-    protected int attack(Heroes target) {
+    public int attack(Heroes target) {
         return super.attack(target) + 3;
     }
 
@@ -52,7 +56,7 @@ public class Pikeman extends Heroes {
     }
 
     @Override
-    protected String getInfo() {
+    public String getInfo() {
         return String.format("%s, class Pikeman", super.getInfo());
     }
 }

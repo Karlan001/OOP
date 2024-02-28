@@ -1,14 +1,16 @@
+package Person;
+
 import java.util.ArrayList;
 
 public class Peasant extends Heroes {
 
-    protected Peasant(String name, int x, int y) {
+    public Peasant(String name, int x, int y) {
         super(name, 40, 20, 20, 5, 5, x, y);
         this.initiative = 0;
     }
 
     @Override
-    protected int attack(Heroes target) {
+    public int attack(Heroes target) {
         return super.attack(target);
     }
 
@@ -23,7 +25,7 @@ public class Peasant extends Heroes {
     }
 
     @Override
-    protected String getInfo() {
+    public String getInfo() {
         return String.format("%s, class Peasant", super.getInfo());
     }
 }

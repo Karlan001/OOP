@@ -1,16 +1,20 @@
+package Person;
+
+import Main.Coordinate;
+
 import java.util.ArrayList;
 
 public class Robber extends Heroes {
     protected int speed;
     protected int dodge;
 
-    protected Robber(String name, int x,int y) {
+    public Robber(String name, int x, int y) {
         super(name, 65, 45, 50, 10, 20, x, y);
         this.initiative = 2;
     }
 
     @Override
-    protected int attack(Heroes target) {
+    public int attack(Heroes target) {
         return super.attack(target) + 3;
     }
 
@@ -56,7 +60,7 @@ public class Robber extends Heroes {
     
 
     @Override
-    protected String getInfo() {
+    public String getInfo() {
         return String.format("%s, class Robber", super.getInfo());
     }
 }

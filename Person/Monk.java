@@ -1,10 +1,12 @@
+package Person;
+
 import java.util.ArrayList;
 
 public class Monk extends Heroes {
     protected int mana;
     protected int efficiency;
 
-    protected Monk(String name, int x, int y) {
+    public Monk(String name, int x, int y) {
         super(name, 65, 40, 35, 10, 10, x, y);
         this.initiative = 1;
     }
@@ -16,7 +18,7 @@ public class Monk extends Heroes {
     }
 
     @Override
-    protected int attack(Heroes target) {
+    public int attack(Heroes target) {
         this.stamina -= 3;
         return super.attack(target) * ((int) (efficiency * 0.22));
     }
@@ -38,7 +40,7 @@ public class Monk extends Heroes {
     }
 
     @Override
-    protected String getInfo() {
+    public String getInfo() {
         return String.format("%s, class Monk", super.getInfo());
     }
 }

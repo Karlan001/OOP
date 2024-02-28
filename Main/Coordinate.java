@@ -1,8 +1,10 @@
-public class Coordinate {
-    int x = 0;
-    int y = 0;
+package Main;
 
-    protected Coordinate(int x, int y){
+public class Coordinate {
+    public int x = 0;
+    public int y = 0;
+
+    public Coordinate(int x, int y){
         this.x = x;
         this.y = y;
     }
@@ -30,7 +32,7 @@ public class Coordinate {
     public int getY(){
         return this.y;
     }
-    protected Coordinate getDifference(Coordinate target){
+    public Coordinate getDifference(Coordinate target){
         Coordinate diff = new Coordinate(x - target.x, y - target.y);
         return diff;
     }

@@ -1,3 +1,5 @@
+package Person;
+
 import java.util.ArrayList;
 
 public class Sniper extends Heroes {
@@ -12,13 +14,13 @@ public class Sniper extends Heroes {
     }
 
     protected int attack(Heroes target) {
-        int damage = random.nextInt(2,6);
-        this.stamina -= random.nextInt(1, 3);
+        int damage = Heroes.random.nextInt(2,6);
+        this.stamina -= Heroes.random.nextInt(1, 3);
         return damage;
     }
 
     @Override
-    protected String getInfo() {
+    public String getInfo() {
         return String.format("%s, class Sniper", super.getInfo(), this.accuracy, this.stealthiness);
     }
 

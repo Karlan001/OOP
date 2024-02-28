@@ -1,3 +1,7 @@
+package Person;
+
+import Person.Heroes;
+
 import java.util.ArrayList;
 
 public interface Step {

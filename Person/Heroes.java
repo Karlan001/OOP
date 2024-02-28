@@ -1,7 +1,10 @@
+package Person;
+
 import java.util.ArrayList;
 import java.util.Random;
+import Main.*;
 
-abstract class Heroes implements Step {
+public abstract class Heroes implements Step {
     protected static Random random;
     protected String name;
     protected int hp;
@@ -29,7 +32,7 @@ static {
         this.strange = strange;
         place = new Coordinate(x, y);
     }
-    protected String getInfo(){
+    public String getInfo(){
         return String.format("Name: %s, hp: %d, stamina: %d, agility: %d, intellect: %d, strange: %d, initiative: %d, place: %d, %d", this.name, this.hp, this.stamina, this.agility, this.intellect,
                 this.strange, this.initiative, this.place.x, this.place.y);
     }
@@ -37,6 +40,9 @@ static {
     protected void getDamage(int damage) {
         if (this.hp - damage > 0) {
             this.hp -= damage;
+        }
+        else {
+            this.hp = 0;
         }
     }
 
@@ -62,14 +68,13 @@ static {
     }
     protected boolean isDead(Heroes hero){
         if(this.hp < 1){
-            this.hp = 0;
             return true;
         }
         else{
             return false;
         }
     }
-    protected int getInitiative(){
+    public int getInitiative(){
         return this.initiative;
     }
 

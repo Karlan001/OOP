@@ -1,3 +1,7 @@
+package Main;
+
+import Person.*;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
