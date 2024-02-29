@@ -1,6 +1,6 @@
 package Person;
 
-import Main.Coordinate;
+import Service.Coordinate;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ public class Pikeman extends Heroes {
 
     @Override
     public String toString() {
-        return name + ", class Pikeman, coordinate: " + place;
+        return String.format("%s , Pikeman, \u2665 - %d", this.name, this.getHp());
     }
 
 
@@ -37,13 +37,13 @@ public class Pikeman extends Heroes {
         int targety = target.place.getY();
         if (place.coordCalc(place.x, place.y, targetx, targety) < 2) {
             team.get(findEnemy(team)).getDamage(attack(team.get(findEnemy(team))));
-            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(team), targetx, targety);
+//            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(team), targetx, targety);
             return;
         }
         Coordinate newcord = new Coordinate(place.x, place.y);
         Coordinate diff = place.getDifference(target.place);
         if (Math.abs(diff.x) > Math.abs(diff.y)) {
-            newcord.x += diff.x > 0 ? 1 : -1;
+            newcord.x += diff.x < 0 ? 1 : -1;
         } else {
             newcord.y += diff.y < 0 ? 1 : -1;
         }
@@ -57,6 +57,6 @@ public class Pikeman extends Heroes {
 
     @Override
     public String getInfo() {
-        return String.format("%s, class Pikeman", super.getInfo());
+        return String.format("Копейщик, %s, class Pikeman", super.getInfo());
     }
 }

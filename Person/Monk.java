@@ -30,7 +30,7 @@ public class Monk extends Heroes {
 
     @Override
     public String toString() {
-        return name + ", class Monk, coordinate: " + place;
+        return String.format("%s , Crossbowman, \u2665 - %d", this.name, this.getHp());
     }
 
 
@@ -41,6 +41,6 @@ public class Monk extends Heroes {
 
     @Override
     public String getInfo() {
-        return String.format("%s, class Monk", super.getInfo());
+        return String.format("Шаман, %s, class Monk", super.getInfo());
     }
 }

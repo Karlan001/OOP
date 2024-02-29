@@ -1,6 +1,6 @@
 package Person;
 
-import Main.Coordinate;
+import Service.Coordinate;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class Robber extends Heroes {
     }
 
     public String toString() {
-        return name + ", class Robber, coordinate: " + place;
+        return String.format("%s , Robber, \u2665 - %d", this.name, this.getHp());
     }
 
 
@@ -38,22 +38,24 @@ public class Robber extends Heroes {
         Heroes target = team.get(findEnemy(team));
         int targetx = target.place.getX();
         int targety = target.place.getY();
-        if (place.coordCalc(place.x, place.y, targetx, targety) < 2) {
+        if (place.coordCalc(place.x, place.y, targetx, targety) < 2 && target.getHp() > 0) {
             team.get(findEnemy(team)).getDamage(attack(team.get(findEnemy(team))));
-            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(team), targetx, targety);
+//            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(team), targetx, targety);
             return;
         }
         Coordinate newcord = new Coordinate(place.x, place.y);
         Coordinate diff = place.getDifference(target.place);
             if (Math.abs(diff.x) > Math.abs(diff.y)) {
-                newcord.x += diff.x > 0 ? 1 : -1;
+                newcord.x += diff.x < 0 ? 1 : -1;
             } else {
                 newcord.y += diff.y < 0 ? 1 : -1;
             }
         for (Heroes heroes : frendly) {
             if (heroes.place.equals(newcord)) return;
-            else place.x = newcord.x;
-            place.y = newcord.y;
+            else {
+                place.x = newcord.x;
+                place.y = newcord.y;
+            }
         }
             
         }
@@ -61,6 +63,6 @@ public class Robber extends Heroes {
 
     @Override
     public String getInfo() {
-        return String.format("%s, class Robber", super.getInfo());
+        return String.format("Бандит, %s, class Robber", super.getInfo());
     }
 }

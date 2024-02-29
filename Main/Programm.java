@@ -1,6 +1,7 @@
 package Main;
 
 import Person.*;
+import Service.View;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,37 +9,49 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Programm {
+    public static ArrayList<Heroes> holyTeam = new ArrayList<>();
+    public static ArrayList<Heroes> darkTeam = new ArrayList<>();
+    public static ArrayList<Heroes> allTeam = new ArrayList<>();
     public static void main(String[] args) {
-        ArrayList<Heroes> team1 = new ArrayList<>();
-        ArrayList<Heroes> team2 = new ArrayList<>();
-        fill_team(team1, 9);
-        fill_team(team2, 0);
-        System.out.println(team1.toString());
-        System.out.println(team2.toString());
-        ArrayList<Heroes> team3 = new ArrayList<>();
-        team3.addAll(team1);
-        team3.addAll(team2);
+
+        fill_team(holyTeam, 10);
+        fill_team(darkTeam, 1);
+        System.out.println(holyTeam.toString());
+        System.out.println(darkTeam.toString());
+        allTeam.addAll(holyTeam);
+        allTeam.addAll(darkTeam);
         Scanner scanner = new Scanner(System.in);
-        team3.sort(new Comparator<Heroes>() {
+        allTeam.sort(new Comparator<Heroes>() {
             @Override
             public int compare(Heroes o1, Heroes o2) {
                 return o2.getInitiative() - o1.getInitiative();
             }
         });
         while (true){
+            View.view();
             scanner.nextLine();
-            for (Heroes hero : team3){
-                if(team1.contains(hero)){
-                    hero.Step(team2, team1);
+            int holyTeamHp = 0;
+            int darkTeamHp = 0;
+            for (Heroes hero : allTeam){
+                if(holyTeam.contains(hero)){
+                    hero.Step(darkTeam, holyTeam);
+                    holyTeamHp += hero.getHp();
                 }
                 else{
-                    hero.Step(team1, team2);
+                    hero.Step(holyTeam, darkTeam);
+                    darkTeamHp += hero.getHp();
                 }
             }
-            for (Heroes heroes : team3) {
-                String info = heroes.getInfo();
-                System.out.println(info);
+            if (holyTeamHp == 0){
+                System.out.println("Победила команда Green Team");
+                break;
             }
+            if (darkTeamHp == 0){
+                System.out.println("Победила команда Blue Team");
+                break;
+            }
+
+
         }
     }
 
@@ -55,8 +68,8 @@ public class Programm {
      */
     static void fill_team(ArrayList<Heroes> team, int y) {
         Random random = new Random();
-        for (int i = 0; i < 5; i++) {
-            int num = random.nextInt(1, 7);
+        for (int i = 1; i < 11; i++) {
+            int num = random.nextInt(1, 8);
             switch (num) {
                 case 1:
                     team.add(new Sniper(random_name(), i, y));

@@ -24,7 +24,7 @@ public class Mag extends Heroes {
     }
     @Override
     public String getInfo() {
-        return String.format("%s, class Mag", super.getInfo());
+        return String.format("Волшебник, %s, class Mag", super.getInfo());
     }
 
     @Override
@@ -33,7 +33,7 @@ public class Mag extends Heroes {
     }
 
     public String toString() {
-        return name + ", class Mag, coordinate: " + place;
+        return String.format("%s , Mag, \u2665 - %d", this.name, this.getHp());
     }
 
 

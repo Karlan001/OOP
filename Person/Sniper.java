@@ -21,12 +21,12 @@ public class Sniper extends Heroes {
 
     @Override
     public String getInfo() {
-        return String.format("%s, class Sniper", super.getInfo(), this.accuracy, this.stealthiness);
+        return String.format("Снайпер, %s, class Sniper", super.getInfo(), this.accuracy, this.stealthiness);
     }
 
     @Override
     public String toString() {
-        return name + ", class Sniper, coordinate: " + place;
+        return String.format("%s , Sniper, \u2665 - %d, \u2694 - %d", this.name, this.getHp(), this.arrows);
     }
 
 
@@ -35,7 +35,7 @@ public class Sniper extends Heroes {
         if(!isDead(Sniper.this) && arrows > 0){
             target.get(findEnemy(target)).getDamage(attack(target.get(findEnemy(target))));
             Heroes tar = target.get(findEnemy(target));
-            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(target), tar.place.x, tar.place.y);
+//            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(target), tar.place.x, tar.place.y);
             arrows -= 1;
         }
     }

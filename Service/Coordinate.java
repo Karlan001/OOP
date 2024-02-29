@@ -1,4 +1,4 @@
-package Main;
+package Service;
 
 public class Coordinate {
     public int x = 0;

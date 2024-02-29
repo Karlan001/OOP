@@ -24,7 +24,7 @@ public class Crossbowman extends Heroes {
     }
 
     public String toString() {
-        return name + ", class Crossbowman, coordinate: " + place;
+        return String.format("%s , Crossbowman, \u2665 - %d, \u2694 - %d", this.name, this.getHp(), this.arrows);
     }
     protected int findEnemy(ArrayList<Heroes> enemy){
         int minDistance = 10;
@@ -49,13 +49,13 @@ public class Crossbowman extends Heroes {
         if(!isDead(Crossbowman.this) && arrows > 0){
             target.get(findEnemy(target)).getDamage(attack(target.get(findEnemy(target))));
             Heroes tar = target.get(findEnemy(target));
-            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(target), tar.place.x, tar.place.y);
+//            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(target), tar.place.x, tar.place.y);
             arrows -= 1;
         }
     }
 
     @Override
     public String getInfo() {
-        return String.format("%s, class Crossbowman", super.getInfo());
+        return String.format("Арбалетчик, %s, class Crossbowman", super.getInfo());
     }
 }

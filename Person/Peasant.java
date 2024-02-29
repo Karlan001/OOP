@@ -15,7 +15,7 @@ public class Peasant extends Heroes {
     }
 
     public String toString() {
-        return name + ", class Peasant, coordinate: " + place;
+        return String.format("%s , Peasant, \u2665 - %d", this.name, this.getHp());
     }
 
 
@@ -26,6 +26,6 @@ public class Peasant extends Heroes {
 
     @Override
     public String getInfo() {
-        return String.format("%s, class Peasant", super.getInfo());
+        return String.format("Рабочий, %s, class Peasant", super.getInfo());
     }
 }

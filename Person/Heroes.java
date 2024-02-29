@@ -2,7 +2,9 @@ package Person;
 
 import java.util.ArrayList;
 import java.util.Random;
-import Main.*;
+
+import Service.Coordinate;
+import Service.Step;
 
 public abstract class Heroes implements Step {
     protected static Random random;
@@ -92,12 +94,16 @@ static {
         for (int i = 0; i < enemy.size(); i++) {
             int x = enemy.get(i).place.getX();
             int y = enemy.get(i).place.getY();
-            if (place.coordCalc(xHero, yHero, x, y) < minDistance){
+            if (place.coordCalc(xHero, yHero, x, y) < minDistance && enemy.get(i).getHp() > 0){
                 minDistance = place.coordCalc(xHero, yHero, x, y);
                 clas = enemy.get(i).toString();
                 index = i;
             }
         }
         return index;
+    }
+
+    public int getHp() {
+        return this.hp;
     }
 }
