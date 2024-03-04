@@ -20,6 +20,7 @@ public abstract class Heroes implements Step {
     public Coordinate place;
 
     protected int initiative;
+    int maxHp;
 
 static {
     Heroes.random = new Random();
@@ -33,6 +34,7 @@ static {
         this.intellect = intellect;
         this.strange = strange;
         place = new Coordinate(x, y);
+        this.maxHp = hp;
     }
     public String getInfo(){
         return String.format("Name: %s, hp: %d, stamina: %d, agility: %d, intellect: %d, strange: %d, initiative: %d, place: %d, %d", this.name, this.hp, this.stamina, this.agility, this.intellect,
@@ -69,7 +71,7 @@ static {
         this.hp += buff;
     }
     protected boolean isDead(Heroes hero){
-        if(this.hp < 1){
+        if(this.hp <= 0){
             return true;
         }
         else{

@@ -9,6 +9,7 @@ public class Monk extends Heroes {
     public Monk(String name, int x, int y) {
         super(name, 65, 40, 35, 10, 10, x, y);
         this.initiative = 1;
+        this.mana = 10;
     }
 
     protected int buff(Heroes target){

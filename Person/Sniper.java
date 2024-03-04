@@ -7,6 +7,7 @@ public class Sniper extends Heroes {
 
     protected int stealthiness;
     int arrows = 10;
+    int maxArrows = 10;
 
     public Sniper(String name, int x, int y) {
         super(name, 60, 40, 35, 10, 10, x, y);

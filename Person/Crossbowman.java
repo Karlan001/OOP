@@ -6,6 +6,8 @@ public class Crossbowman extends Heroes {
     protected int accuracy;
     protected int speed;
     int arrows = 8;
+    int maxArrows = 8;
+
 
     public Crossbowman(String name, int x, int y) {
         super(name, 80, 50, 45, 10, 50, x, y);
