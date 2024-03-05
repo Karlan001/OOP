@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class Peasant extends Heroes {
 int arrows;
+    int maxHp = 40;
     public Peasant(String name, int x, int y) {
         super(name, 40, 20, 20, 5, 5, x, y);
         this.initiative = 0;
         this.arrows = 1;
+        this.hp = maxHp;
     }
 
     @Override

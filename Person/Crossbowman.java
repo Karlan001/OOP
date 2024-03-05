@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Crossbowman extends Heroes {
     protected int accuracy;
-    protected int speed;
+    int maxHp = 80;
     int arrows = 8;
     int maxArrows = 8;
 
@@ -12,6 +12,7 @@ public class Crossbowman extends Heroes {
     public Crossbowman(String name, int x, int y) {
         super(name, 80, 50, 45, 10, 50, x, y);
         this.initiative = 3;
+        this.hp = maxHp;
     }
 
     @Override

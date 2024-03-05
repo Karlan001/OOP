@@ -6,11 +6,12 @@ import java.util.ArrayList;
 
 public class Pikeman extends Heroes {
     protected int power;
-    protected int speed;
+    int maxHp = 75;
 
     public Pikeman(String name, int x, int y) {
         super(name, 75, 45, 40, 10, 35, x, y);
         this.initiative = 2;
+        this.hp = maxHp;
     }
 
     @Override
@@ -35,7 +36,7 @@ public class Pikeman extends Heroes {
         Heroes target = team.get(findEnemy(team));
         int targetx = target.place.getX();
         int targety = target.place.getY();
-        if (place.coordCalc(place.x, place.y, targetx, targety) < 2) {
+        if (place.coordCalc(place.x, place.y, targetx, targety) < 2 && target.getHp() > 0) {
             team.get(findEnemy(team)).getDamage(attack(team.get(findEnemy(team))));
 //            System.out.printf("Цель под индексом %s атакована! Находиться на коррдинатах %d, %d\n", findEnemy(team), targetx, targety);
             return;
@@ -48,10 +49,9 @@ public class Pikeman extends Heroes {
             newcord.y += diff.y < 0 ? 1 : -1;
         }
         for (Heroes heroes : frendly) {
-            if (heroes.place.equals(newcord)) return;
-            else place.x = newcord.x;
-            place.y = newcord.y;
+            if (newcord.equals(heroes.place) && !isDead(heroes)) return;
         }
+        place = newcord;
 
     }
 

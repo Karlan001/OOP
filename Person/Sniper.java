@@ -8,10 +8,12 @@ public class Sniper extends Heroes {
     protected int stealthiness;
     int arrows = 10;
     int maxArrows = 10;
+    int maxHp = 60;
 
     public Sniper(String name, int x, int y) {
         super(name, 60, 40, 35, 10, 10, x, y);
         this.initiative = 3;
+        this.hp = maxHp;
     }
 
     protected int attack(Heroes target) {

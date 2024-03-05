@@ -7,10 +7,12 @@ import java.util.ArrayList;
 public class Robber extends Heroes {
     protected int speed;
     protected int dodge;
+    int maxHp = 65;
 
     public Robber(String name, int x, int y) {
         super(name, 65, 45, 50, 10, 20, x, y);
         this.initiative = 2;
+        this.hp = maxHp;
     }
 
     @Override
@@ -51,13 +53,9 @@ public class Robber extends Heroes {
                 newcord.y += diff.y < 0 ? 1 : -1;
             }
         for (Heroes heroes : frendly) {
-            if (heroes.place.equals(newcord)) return;
-            else {
-                place.x = newcord.x;
-                place.y = newcord.y;
-            }
+            if (newcord.equals(heroes.place) && !isDead(heroes)) return;
         }
-            
+            place = newcord;
         }
     
 

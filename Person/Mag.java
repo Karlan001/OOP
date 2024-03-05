@@ -1,16 +1,19 @@
 package Person;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Mag extends Heroes {
     protected int mana;
     protected int spell_speed;
     protected int maxMana = 10;
+    int maxHp = 50;
 
     public Mag(String name, int x, int y) {
         super(name, 50, 30, 25, 40, 10, x, y);
         this.initiative = 1;
         this.mana = maxMana;
+        this.hp = maxHp;
     }
 
     protected int attack(Heroes target) {
@@ -44,19 +47,26 @@ public class Mag extends Heroes {
     public void Step(ArrayList<Heroes> team, ArrayList<Heroes> frendly) {
         if (isDead(Mag.this)) return;
         ArrayList<Heroes> forHeal = new ArrayList<>(frendly);
-        forHeal.sort((Heroes h1, Heroes h2) -> h1.getHp() - h2.getHp());
-        System.out.println(forHeal.toString());
+        forHeal.sort(Comparator.comparingInt(Heroes::getHp));
+        int count = 0;
         for (Heroes hero : forHeal) {
-            if (!isDead(hero) && mana >= 2) {
-                System.out.println(hero.getHp());
+            if (!isDead(hero) && mana >= 2 && (hero.hp <= (int) (this.maxHp * 0.8))) {
+                if (hero.getHp() >= maxHp) return;
                 hero.getDamage(heal(hero));
                 mana -= 2;
-                System.out.println(hero.name + " Вылечен");
-                System.out.println(hero.getHp());
+                System.out.println(hero.name + " Получил лечение");
+                return;
+            }
+            if (isDead(hero)) {
+                count++;
+                if (count >= 3 && mana == maxMana) {
+                    hero.getDamage(heal(hero));
+                    mana -= maxMana;
+                    System.out.println(this.name + " Воскресил - " + hero);
+                    return;
+                }
             }
         }
-        if (mana < maxMana) {
-            mana++;
-        }
+        if (mana < maxMana) mana++;
     }
 }

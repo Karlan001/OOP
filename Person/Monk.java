@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Monk extends Heroes {
     protected int mana;
     protected int efficiency;
+    int maxHp = 65;
 
     public Monk(String name, int x, int y) {
         super(name, 65, 40, 35, 10, 10, x, y);
         this.initiative = 1;
         this.mana = 10;
+        this.hp = maxHp;
     }
 
     protected int buff(Heroes target){
