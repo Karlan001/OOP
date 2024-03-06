@@ -1,11 +1,13 @@
 package Person;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Monk extends Heroes {
     protected int mana;
     protected int efficiency;
     int maxHp = 65;
+    int maxMana = 10;
 
     public Monk(String name, int x, int y) {
         super(name, 65, 40, 35, 10, 10, x, y);
@@ -28,18 +30,41 @@ public class Monk extends Heroes {
 
     @Override
     protected int heal(Heroes target) {
-        return super.heal(target);
+        int heal = -7;
+        return heal;
     }
 
     @Override
     public String toString() {
-        return String.format("%s , Crossbowman, \u2665 - %d", this.name, this.getHp());
+        return String.format("%s , Monk, \u2665 - %d, mana - %d", this.name, this.getHp(), this.mana);
     }
 
 
     @Override
     public void Step(ArrayList<Heroes> team, ArrayList<Heroes> frendly) {
-
+        if (isDead(Monk.this)) return;
+        ArrayList<Heroes> forHeal = new ArrayList<>(frendly);
+        forHeal.sort(Comparator.comparingInt(Heroes::getHp));
+        int count = 0;
+        for (Heroes hero : forHeal) {
+            if (!isDead(hero) && mana >= 2 && (hero.hp <= (int) (this.maxHp * 0.6))) {
+                if (hero.getHp() >= maxHp) return;
+                hero.getDamage(heal(hero));
+                mana -= 2;
+                System.out.println(hero.name + " Получил лечение");
+                return;
+            }
+            if (isDead(hero)) {
+                count++;
+                if (count >= 3 && mana == maxMana) {
+                    hero.getDamage(heal(hero));
+                    mana -= maxMana;
+                    System.out.println(this.name + " Воскресил - " + hero);
+                    return;
+                }
+            }
+        }
+        if (mana < maxMana) mana++;
     }
 
     @Override
